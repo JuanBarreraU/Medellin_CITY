@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2817cd070eb8b42488d3694c2e037d00
+timeCreated: 1504365494
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Flesh Wound
+  fontNames:
+  - Flesh Wound
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

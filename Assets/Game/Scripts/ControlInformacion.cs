@@ -11,22 +11,16 @@ public class ControlInformacion : MonoBehaviour
     public GameObject panelDetalles;
     public GameObject botonRecogerMonedas;
 
-	// Use this for initialization
+	// El boton para recoger monedas inicia desactivado.
 	void Awake ()
     {
         botonRecogerMonedas.SetActive(false);
 
 
 	}
-
-
-	
-	// Update is called once per frame
-	void Update ()
-    {
 		
-	}
-
+	//Si se da clic sobre alguna construccion con este script, se activara el panel de detalles y se actualizaran los textos correspondientes a la construccion.
+	//Si el la construccion que tiene este script es el banco, se activara el boton que permite recoger monedas. de lo contrario seguira inactivo.
     public void OnMouseDown()
     {
 		

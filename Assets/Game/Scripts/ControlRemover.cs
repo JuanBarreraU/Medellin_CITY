@@ -20,6 +20,7 @@ public class ControlRemover : MonoBehaviour
 		
 	}
 
+	//Se cambia de cursor.
 	public void CambiarCursor()
 	{
 		Cursor.SetCursor (cursorRemover, hotSpot, modoCursor);

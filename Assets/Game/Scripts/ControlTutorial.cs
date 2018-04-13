@@ -14,23 +14,26 @@ public class ControlTutorial : MonoBehaviour
 	public GameObject botonCerrar;
 	public GameObject canvas;
 
-	// Use this for initialization
+	// La flecha del tutorial inicia desactivada.
 	void Start () 
 	{
 		flecha.SetActive (false);
 	}
 	
-	// Update is called once per frame
+	// Se llama la funcion ActualizarDialogo para actualizar el dialogo en pantalla en todo momento mientras el tutorial.
 	void Update () 
 	{
 		ActualizarDialogo ();
 	}
 
+	//Al llamar esta funcion aumenta la cantidad de clicks en 1.
 	public void DarClick()
 	{
 		cantClicks++;
 	}
 
+	//Si se llama esta funcion se actualiza el dialogo del tutorial.
+	//cada que aumente la cantidad de clicks el dialogo cambia hasta terminarse el tutorial.
 	public void ActualizarDialogo()
 	{
 		GameObject[] botones = GameObject.FindGameObjectsWithTag ("Boton");

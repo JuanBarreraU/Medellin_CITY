@@ -5,24 +5,19 @@ using UnityEngine;
 public class ControlRio : MonoBehaviour 
 {
 	public Material[] materialesRio;
-	public GameObject canvas;
 
-	// Use this for initialization
-	void Start () 
-	{
-		
-	}
 	
-	// Update is called once per frame
+	//Se llama la funcion cambiarMaterialRio para mantener actualizado el color del rio de la ciudad.
 	void Update () 
 	{
 		cambiarMaterialRio ();
 	}
 
+	//Al llamarse esta funcion si la cantidad de contaminacion es mayor a 80, el rio cambia de Material para verse sucio y contaminado.
 	public void cambiarMaterialRio()
 	{
-		
-		if (canvas.GetComponent<ControlContaminacion>().cantidadContaminacion > 80) 
+		GameObject canvas = GameObject.FindGameObjectWithTag ("CanvasPrincipal");
+		if (canvas.GetComponent<ControlContaminacion> ().cantidadContaminacion > 80f) 
 		{
 			print ("cambiar");
 			this.GetComponent<Renderer> ().material = materialesRio [1];

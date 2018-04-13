@@ -4,16 +4,8 @@ using System.Collections;
 
 public class LvlManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
+	//Si se llama esta funcion se cambia del menu a la scena del juego.
 	public void CargaPartida(string MedellinCity02)
 	{
 		SceneManager.LoadScene (MedellinCity02);

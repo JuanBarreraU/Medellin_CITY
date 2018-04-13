@@ -6,24 +6,14 @@ public class ControlPaneles : MonoBehaviour
 {
     public GameObject[] paneles;
 
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-
+	//Si se llama esta funcion se abre el panel correspondiente a la posicion dada como argumento.
     public void AbrirPanel(int panel)
     {
         CerrarPaneles();
         paneles[panel].SetActive(true);
     }
 
+	//Si se llama esta funcion se cierran los demas paneles y el boton de reclamar.
     public void CerrarPaneles()
     {
         for (int i = 0; i < paneles.Length; i++)
@@ -39,7 +29,7 @@ public class ControlPaneles : MonoBehaviour
 		}
     }
 		
-
+	//Al llamar esta funcion se cierra solo el panel indicado en el argumento.
 	public void CerrarPanelInvidialmente(int panel)
 	{
 		paneles [panel].SetActive (false);

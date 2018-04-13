@@ -19,7 +19,7 @@ public class ControlFabrica : MonoBehaviour
 
 
 
-	// Use this for initialization
+	// Se llama la funcion iniciar Textos para darle contenido a los textos al iniciar.
 	void Start () 
 	{
 		IniciarTextos ();
@@ -27,7 +27,7 @@ public class ControlFabrica : MonoBehaviour
 		
 	}
 	
-	// Update is called once per frame
+	// se Actualizan los textos correspondientes a las cantidades que se pueden fabricar de cada material.
 	void Update () 
 	{
 		for (int i = 0; i < textosCantidadPosible.Length; i++) 
@@ -40,12 +40,14 @@ public class ControlFabrica : MonoBehaviour
 		
 	}
 
+	//Si  se da click sobre la fabrica se abre el panel que le permite al jugador comprar materiales para la construccion.
 	public void OnMouseDown()
 	{
 		GameObject canvas = GameObject.FindGameObjectWithTag ("CanvasPrincipal");
 		canvas.GetComponent<ControlPaneles> ().AbrirPanel (8);
 	}
 
+	//al llamar esta funcion segun sea el tipo de material, si se tiene el oro necesario, se ejecuta la compra del materarial, y se inicia la fabricacion que dura un tiempo.
 	public void ComprarMaterial(int tipo)
 	{
 		GameObject banco = GameObject.FindGameObjectWithTag ("Banco");
@@ -77,11 +79,13 @@ public class ControlFabrica : MonoBehaviour
 		}
 	}
 
+	//Al llamar esta funcion se actualizan los tiempos de fabricacion de cada material de construccion.
 	public void ActualizarTiempos(int pos)
 	{
 		tiemposProduccion [pos] = tiemposEstablecidos [pos];
 	}
 
+	//Al llamar esta funcion se actualiza el tiempo de fabricacion de la madera constantemente y sus  respectivos textos constantemente.
 	public void ActualizarCronometroMadera()
 	{
 		
@@ -99,6 +103,8 @@ public class ControlFabrica : MonoBehaviour
 			textosIndicadoresCompras [0].text = "ALMACENAR";
 		}
 	}
+
+	//Al llamar esta funcion se actualiza el tiempo de fabricacion del hierro constantemente y sus  respectivos textos constantemente.
 	public void ActualizarCronometroHierro()
 	{
 		
@@ -116,6 +122,8 @@ public class ControlFabrica : MonoBehaviour
 			textosIndicadoresCompras [1].text = "ALMACENAR";
 		}
 	}
+
+	//Al llamar esta funcion se actualiza el tiempo de fabricacion del plastico constantemente y sus  respectivos textos constantemente.
 	public void ActualizarCronometroPlastico()
 	{
 		
@@ -134,6 +142,7 @@ public class ControlFabrica : MonoBehaviour
 		}
 	}
 
+	//Al llamar esta funcion se procede a almacenar el material comprado, en el almacen, siempre y cuando no exceda la capacidad del almacen.
 	public void Almacenar(int material)
 	{
 		
@@ -154,6 +163,7 @@ public class ControlFabrica : MonoBehaviour
 			
 	}
 
+	//Al llamar esta funcion se le da contenido a los textos de fabricacion.
 	public void IniciarTextos()
 	{
 		for (int i = 0; i < cantidadesProducidas.Length; i++) 

@@ -17,7 +17,8 @@ public class ControlBanco : MonoBehaviour
 	public GameObject canvas;
 
 
-	// Use this for initialization
+	//Se invoca la funcion AumentarOro para que se ejecute cada 1 segundo.
+	// se inicia la cantidad de oro en 100.
 	void Start () 
 	{
 		Invoke ("AumentarOro", 1f);
@@ -26,7 +27,7 @@ public class ControlBanco : MonoBehaviour
 		
 	}
 	
-	// Update is called once per frame
+	// Se actualizan los textos de oro y  gemas y se pone a rotar el signo que hay sobre el banco.
 	void Update () 
 	{
 		
@@ -37,14 +38,11 @@ public class ControlBanco : MonoBehaviour
 		
 	}
 
+	//Esta funcion se llama cada 120 segundos y aumenta el oro segun la cantidad de personas en la ciudad.
 	public void AumentarOro()
 	{
-		 
-
-
-
-		oroAcomulado += (canvas.GetComponent<ControlPoblacion> ().cantidadPersonas / 4);
-		Invoke ("AumentarOro", 10);
+		oroAcomulado += (canvas.GetComponent<ControlPoblacion> ().cantidadPersonas / 8);
+		Invoke ("AumentarOro", 120);
 		
 		oro = oroAcomulado;
 
@@ -52,7 +50,7 @@ public class ControlBanco : MonoBehaviour
     }
 
 
-
+	//Si se llama esta funcion aumenta el oro acumulado que puede ser recogido por el jugador.
     public void ReclamarOro()
     {
         totalOro += oro;
@@ -60,6 +58,7 @@ public class ControlBanco : MonoBehaviour
 
     }
 
+	//Si se llama esta funcion se reduce el oro respectivo al pago de alguna construccion.
 	public void Pagar(int cantidad)
 	{
 		if (cantidad <= totalOro)
@@ -68,6 +67,8 @@ public class ControlBanco : MonoBehaviour
 		}
 	}
 
+
+	//Si se llama esta funcion se reducen las gemas respectivas al pago de la construccion.
 	public void PagarConGemas(int cantidad)
 	{
 		if (cantidad <= gemas) 

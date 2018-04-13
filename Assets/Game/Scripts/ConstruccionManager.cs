@@ -41,17 +41,22 @@ public class ConstruccionManager : MonoBehaviour
 	public int[] cantidadAntiContaminantes;
 	private ConstruccionPlacement construccionPlacement;
 
+	//Se inicia accediendo a una instancia d este script.
 	void Start ()
 	{
 		construccionPlacement = GetComponent<ConstruccionPlacement> ();
 
 	}
 
+	//Se llama la funcion ActualizarTextosCantidades para que los textos se mantengan actualizados.
 	void Update()
 	{
 		ActualizarTextosCantidades ();
 	}
 
+	//Si se llama esta funcion se debe ingresar un argumento, segun el numero del argumento se construye la casa indicada.
+	//Para construir la casa se debe de contar con los materiales necsarios, los cuales son verificados desde el script ControlAlmacen.
+	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirCasa (int casa)
 	{
 		if (casa == 0) 
@@ -98,6 +103,9 @@ public class ConstruccionManager : MonoBehaviour
         
     }
 
+	//Si se llama esta funcion se debe ingresar un argumento, segun el numero del argumento se construye el edificio indicado.
+	//Para el edificio se debe de contar con los materiales necsarios, los cuales son verificados desde el script ControlAlmacen.
+	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirEdificio(int edificio)
 	{
 		if (banco.GetComponent<ControlBanco> ().totalOro >= costoEdificiosOro [edificio] &&
@@ -142,6 +150,9 @@ public class ConstruccionManager : MonoBehaviour
 		}
 	}
 
+	//Si se llama esta funcion se debe ingresar un argumento, segun el numero del argumento se construye la calle indicada.
+	//Para construir la calle se debe de contar con los materiales necsarios, los cuales son verificados desde el script ControlAlmacen.
+	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirCalle(int calle)
 	{
 		if (banco.GetComponent<ControlBanco> ().totalOro >= costoCallesOro [calle] &&
@@ -181,6 +192,9 @@ public class ConstruccionManager : MonoBehaviour
 		}
 	}
 
+	//Si se llama esta funcion se debe ingresar un argumento, segun el numero del argumento se construye el anticontaminante indicado.
+	//Para construir el anticontaminante se debe de contar con los materiales necsarios, los cuales son verificados desde el script ControlAlmacen.
+	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se reduce la contaminacion, y se aumentan, la poblacion y la experiencia.
 	public void ConstruirAntiContaminante(int antiContaminante)
 	{
 		if (banco.GetComponent<ControlBanco> ().totalOro >= costoAntiContaminantesOro [antiContaminante] &&
@@ -223,6 +237,7 @@ public class ConstruccionManager : MonoBehaviour
 		}
 	}
 
+	//Al llamar esta funcion se actualizan todos los textos pertenecientes a este script.
 	public void ActualizarTextosCantidades()
 	{
 		for (int i = 0; i < textCantidadCasas.Length; i++) 

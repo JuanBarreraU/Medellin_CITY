@@ -9,7 +9,7 @@ public class ControlBotonMejoras : MonoBehaviour
     
     
 
-	// Use this for initialization
+	// las mejoras inician inactivas.
 	void Start ()
     {
         activarMejora = false;
@@ -17,16 +17,14 @@ public class ControlBotonMejoras : MonoBehaviour
         
 	}
 	
-	// Update is called once per frame
-	void Update ()
-    {
-	}
 
+	//Si se llama esta funcion se da la informacion de que se puede activar la mejora.
     public void ActivarMejora()
     {
         canvasMejora.SetActive(true);
     }
 
+	//Si se llama esta funcion se elige una de las casas en la escena al azar y esta pedirá que se le realize una mejora.
     public void RealizarMejora()
     {
         

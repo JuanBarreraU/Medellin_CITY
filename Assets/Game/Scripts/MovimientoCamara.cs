@@ -8,7 +8,8 @@ public class MovimientoCamara : MonoBehaviour
 	public int max;
 	public int min;
 
-
+	//Se llama la funcion Zoom que es la que permite que el jugador acercar la camara.
+	//Se llama la funcion ArrastrarCamara que le permite al jugador mover la camara por todo el terreno.
 	void Update () 
 	{
 		Zoom ();
@@ -16,6 +17,7 @@ public class MovimientoCamara : MonoBehaviour
 
 	}
 
+	//Si se llama esta funcion al mover el scroll del mouse segun la direccion, la camara se acercara o alejará.
 	public void Zoom ()
 	{
 		float d = Input.GetAxis ("Mouse ScrollWheel");
@@ -31,6 +33,7 @@ public class MovimientoCamara : MonoBehaviour
 		}
 	}
 
+	//Si se llama esta funcion la camara se puede mover en x y z.
 	public void Mover()
 	{
 		float dir_x = Input.GetAxis ("Mouse X");
@@ -38,6 +41,7 @@ public class MovimientoCamara : MonoBehaviour
 		transform.Translate (-dir_x * 1, 0, -dir_z * 1);
 	}
 
+	//Si se llama esta funcion se puede mover la camara con el click derecho del mouse.
 	public void ArrastrarCamara ()
 	{
 

@@ -63,7 +63,7 @@ public class ConstruccionPlacement : MonoBehaviour
     }
 
 
-
+	//Si se llama esta funcion el objeto a construir se instancia en la posicion del cursor del mouse.
     public void SetItem(GameObject b)
     {
         if (!locating)
@@ -74,6 +74,8 @@ public class ConstruccionPlacement : MonoBehaviour
         }
 
     }
+
+	//Si se llama esta funcion el objeto a construir toma la posicion del cursor del mouse.
 	public void Construir(GameObject b)
 	{
 		if (!locating)

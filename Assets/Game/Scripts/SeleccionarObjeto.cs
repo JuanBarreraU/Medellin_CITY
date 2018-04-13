@@ -7,10 +7,7 @@ public class SeleccionarObjeto : MonoBehaviour
 
 	Camera camera;
 
-	void Start ()
-	{
 
-	}
 
 	void Update ()
 

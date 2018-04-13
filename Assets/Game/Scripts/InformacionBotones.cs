@@ -10,6 +10,7 @@ public class InformacionBotones : MonoBehaviour, IPointerEnterHandler, IPointerE
 	public Text textoNombre;
 	public GameObject costo;
 
+	//Si el cursor esta sobre el objeto que tenga este script, se activara la infirmacion para que pueda verse en pantalla.
     public void OnPointerEnter(PointerEventData eventData)
     {
         informacion.SetActive(true);
@@ -19,6 +20,8 @@ public class InformacionBotones : MonoBehaviour, IPointerEnterHandler, IPointerE
 			costo.SetActive (true);
 		}
     }
+
+	//Si el cursor deja de estar sobre el objeto con este script, se desactiva la informacion.
     public void OnPointerExit(PointerEventData eventData)
     {
 
@@ -28,6 +31,8 @@ public class InformacionBotones : MonoBehaviour, IPointerEnterHandler, IPointerE
 			costo.SetActive (false);
 		}
     }
+
+	//Si se da click sobre el objeto con este script, se desactiva la informacion.
     public void OnPointerClick(PointerEventData eventData)
     {
 

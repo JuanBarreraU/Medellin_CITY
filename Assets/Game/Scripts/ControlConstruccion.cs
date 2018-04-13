@@ -8,10 +8,7 @@ public class ControlConstruccion : MonoBehaviour
 	private Color colorCubo;
 	public GameObject cubo;
 
-	// Use this for initialization
-
-
-		
+	//la construccion inicia sin estar ubicada en la posicion deseada y se activa un cubo semitrasparente de color verde.
 	void Start () 
 	{
 		ubicado = false;
@@ -22,7 +19,7 @@ public class ControlConstruccion : MonoBehaviour
 		
 	}
 	
-	// Update is called once per frame
+	//si la construccion es ubicada en la posicion deseada el cubo de color verde desaparece.
 	void Update () 
 	{
 		
@@ -36,6 +33,7 @@ public class ControlConstruccion : MonoBehaviour
 
 	}
 
+	//Si la construccion colisiona con otro objeto con un tag diferente a Building, el cubo se pondrá rojo indicando q no se puede construir ahi.
 	public void OnTriggerStay(Collider col)
 	{
 		if (col.tag != "Building" && ubicado == false) 
@@ -48,6 +46,8 @@ public class ControlConstruccion : MonoBehaviour
 		}
 	}
 
+
+	//Si la construccion deja de colisionar el cubo nuevamente será verde indicando que ahi si se puede construir.
 	public void OnTriggerExit(Collider col)
 	{
 		if (col.tag != "Building") 

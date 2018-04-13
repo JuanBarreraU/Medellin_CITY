@@ -55,6 +55,7 @@ public class ConstruccionManager : MonoBehaviour
 	}
 
 	//Si se llama esta funcion se debe ingresar un argumento, segun el numero del argumento se construye la casa indicada.
+	//Si no se esta removiendo.
 	//Para construir la casa se debe de contar con los materiales necsarios, los cuales son verificados desde el script ControlAlmacen.
 	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirCasa (int casa)

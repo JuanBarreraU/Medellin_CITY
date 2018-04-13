@@ -28,12 +28,13 @@ public class ControlRemover : MonoBehaviour
 		}
 	}
 
-	//Se cambia de cursor.
+	//Al llamar esta funcion, el cursor toma la textura indicada.
 	public void CambiarCursor()
 	{
 		Cursor.SetCursor (cursorRemover, hotSpot, modoCursor);
 	}
 
+    //si se llama esta funcion, la variable remover cambia de verdadero a falso y viceversa.
 	public void IniciarDemolicion ()
 	{
 		remover = !remover;

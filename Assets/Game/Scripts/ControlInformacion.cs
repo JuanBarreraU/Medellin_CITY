@@ -16,12 +16,12 @@ public class ControlInformacion : MonoBehaviour
 	void Awake ()
     {
         botonRecogerMonedas.SetActive(false);
-
-
 	}
 
-	public void Update()
+    //Se busca el canvas principal en escena.
+    public void Update()
 	{
+        
 		canvas = GameObject.FindGameObjectWithTag ("CanvasPrincipal");
 	}
 		
@@ -29,6 +29,7 @@ public class ControlInformacion : MonoBehaviour
 	//Si el la construccion que tiene este script es el banco, se activara el boton que permite recoger monedas. de lo contrario seguira inactivo.
     public void OnMouseDown()
     {
+        
 		if (canvas.GetComponent<ControlRemover> ().remover == false) 
 		{
 			panelDetalles.SetActive (true);
@@ -45,8 +46,6 @@ public class ControlInformacion : MonoBehaviour
 			else
 				botonRecogerMonedas.SetActive (false);
 		}
-        
-            
 
    
     }

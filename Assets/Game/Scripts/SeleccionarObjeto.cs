@@ -5,11 +5,13 @@ using System.Collections;
 public class SeleccionarObjeto : MonoBehaviour
 {
 
-	Camera camera;
+	//Camera   cam;
 	public GameObject canvas;
 
 
-
+    //Se crea un raycast que devuelve el nombre del objeto al cual esta apuntando el cursor.
+    //Si remover es verdadero, se activara el cubo que indica que estoy seleccionando ese objeto.
+    //Si remover es verdadero y doy clic, se elimina o desactiva el objeto al que le de click.
 	void Update ()
 
 	{

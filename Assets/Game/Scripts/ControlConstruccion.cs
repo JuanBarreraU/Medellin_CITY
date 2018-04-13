@@ -8,6 +8,7 @@ public class ControlConstruccion : MonoBehaviour
 	public bool ubicado;
 	private Color colorCubo;
 	public GameObject cubo;
+    public GameObject canvas;
 
 	//la construccion inicia sin estar ubicada en la posicion deseada y se activa un cubo semitrasparente de color verde.
 	void Start () 
@@ -23,19 +24,16 @@ public class ControlConstruccion : MonoBehaviour
 	//si la construccion es ubicada en la posicion deseada el cubo de color verde desaparece.
 	void Update () 
 	{
-		GameObject canvas = GameObject.FindGameObjectWithTag ("CanvasPrincipal");
-		
+
+        canvas = GameObject.FindGameObjectWithTag("CanvasPrincipal");
 		cubo.GetComponent<MeshRenderer> ().material.color = colorCubo;
-		if (ubicado == true && canvas.GetComponent<ControlRemover>().remover == false )
-		{
-			DesactivarCubo ();
-		}
 
-			
+        if (ubicado == true && canvas.GetComponent<ControlRemover>().remover == false)
+        {
+            DesactivarCubo();
+        }
 
-
-
-	}
+    }
 
 	//Si la construccion colisiona con otro objeto con un tag diferente a Building, el cubo se pondrá rojo indicando q no se puede construir ahi.
 	public void OnTriggerStay(Collider col)
@@ -64,12 +62,13 @@ public class ControlConstruccion : MonoBehaviour
 	}
 
 
-
+    //Si se llama esta funcion se activa el cubo de construccion.
 	public void ActivarCubo()
 	{
 		cubo.SetActive (true);
 	}
 
+    //Si se llama esta funcion se desactiva el cubo de construccion.
 	public void DesactivarCubo()
 	{
 		cubo.SetActive (false);

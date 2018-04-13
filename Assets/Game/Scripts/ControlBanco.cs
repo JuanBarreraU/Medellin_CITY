@@ -42,7 +42,7 @@ public class ControlBanco : MonoBehaviour
 	public void AumentarOro()
 	{
 		oroAcomulado += (canvas.GetComponent<ControlPoblacion> ().cantidadPersonas / 8);
-		Invoke ("AumentarOro", 120);
+		Invoke ("AumentarOro", 30);
 		
 		oro = oroAcomulado;
 

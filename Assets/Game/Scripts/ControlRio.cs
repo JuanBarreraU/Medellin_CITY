@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControlRio : MonoBehaviour 
 {
 	public Material[] materialesRio;
+	public GameObject canvas;
 
 	// Use this for initialization
 	void Start () 
@@ -20,8 +21,8 @@ public class ControlRio : MonoBehaviour
 
 	public void cambiarMaterialRio()
 	{
-		GameObject canvas = GameObject.FindGameObjectWithTag ("CanvasPrincipal");
-		if (canvas.GetComponent<ControlContaminacion> ().cantidadContaminacion > 80f) 
+		
+		if (canvas.GetComponent<ControlContaminacion>().cantidadContaminacion > 80) 
 		{
 			print ("cambiar");
 			this.GetComponent<Renderer> ().material = materialesRio [1];

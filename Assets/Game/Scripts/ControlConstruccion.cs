@@ -25,9 +25,9 @@ public class ControlConstruccion : MonoBehaviour
 	void Update () 
 	{
 
-        canvas = GameObject.FindGameObjectWithTag("CanvasPrincipal");
+        
 		cubo.GetComponent<MeshRenderer> ().material.color = colorCubo;
-
+        canvas = GameObject.FindGameObjectWithTag("CanvasPrincipal");
         if (ubicado == true && canvas.GetComponent<ControlRemover>().remover == false)
         {
             DesactivarCubo();

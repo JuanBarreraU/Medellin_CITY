@@ -10,7 +10,10 @@ public class ConstruccionPlacement : MonoBehaviour
 	public bool puedeConstruir;
     public bool locating;
 
-    // Se crea un raycast que va desde la camara hasta la posicion del mouse.
+    private void Start()
+    {
+        locating = false;
+    }
     void Update()
     {
         RaycastHit hit;

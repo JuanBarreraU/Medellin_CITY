@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ControlConstruccion : MonoBehaviour 
+public class ControlConstruccion : MonoBehaviour
 {
 	public bool ubicado;
 	private Color colorCubo;
@@ -12,7 +13,7 @@ public class ControlConstruccion : MonoBehaviour
 	void Start () 
 	{
 		ubicado = false;
-		cubo.SetActive (true);
+		ActivarCubo ();
 		colorCubo = new Color(0F, 1F, 0F, 0.3F);
 
 
@@ -22,12 +23,15 @@ public class ControlConstruccion : MonoBehaviour
 	//si la construccion es ubicada en la posicion deseada el cubo de color verde desaparece.
 	void Update () 
 	{
+		GameObject canvas = GameObject.FindGameObjectWithTag ("CanvasPrincipal");
 		
 		cubo.GetComponent<MeshRenderer> ().material.color = colorCubo;
-		if (ubicado == true)
+		if (ubicado == true && canvas.GetComponent<ControlRemover>().remover == false )
 		{
-			cubo.SetActive (false);
+			DesactivarCubo ();
 		}
+
+			
 
 
 
@@ -58,4 +62,18 @@ public class ControlConstruccion : MonoBehaviour
 		
 		}
 	}
+
+
+
+	public void ActivarCubo()
+	{
+		cubo.SetActive (true);
+	}
+
+	public void DesactivarCubo()
+	{
+		cubo.SetActive (false);
+	}
+
+
 }

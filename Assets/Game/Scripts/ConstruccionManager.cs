@@ -59,92 +59,99 @@ public class ConstruccionManager : MonoBehaviour
 	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirCasa (int casa)
 	{
-		if (casa == 0) 
+		if (canvasPropiedades.GetComponent<ControlRemover> ().remover == false) 
 		{
-			if (banco.GetComponent<ControlBanco> ().totalOro >= costoCasaOro && 
-				almacen.GetComponent<ControlAlmacen>().cantMateriales[0] >= costoCasaMadera &&
-				almacen.GetComponent<ControlAlmacen>().cantMateriales[1] >= costoCasaHierro &&
-				almacen.GetComponent<ControlAlmacen>().cantMateriales[2] >= costoCasaPlastico) 
+			if (casa == 0) 
 			{
-				if (cantidadCasas [casa] < cantidadMaximaCasas [casa]) 
+				if (banco.GetComponent<ControlBanco> ().totalOro >= costoCasaOro &&
+				    almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] >= costoCasaMadera &&
+				    almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] >= costoCasaHierro &&
+				    almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] >= costoCasaPlastico) 
 				{
-					construccionPlacement.SetItem (casas [casa]);
-					cantidadCasas [casa] += 1;
-					banco.GetComponent<ControlBanco> ().totalOro -= costoCasaOro;
-					almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoCasaMadera;
-					almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoCasaHierro;
-					almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoCasaPlastico;
-					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (1.5f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (5);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (10);
-
-				}
-			}
-		}
-		if (casa == 1) 
-		{
-			if (banco.GetComponent<ControlBanco> ().gemas >= costoCasaGemas) 
-			{
-				if (cantidadCasas [casa] < cantidadMaximaCasas [casa]) 
-				{
-					construccionPlacement.SetItem (casas [casa]);
-					cantidadCasas [casa] += 1;
-					banco.GetComponent<ControlBanco> ().gemas -= costoCasaGemas;
-					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (1.5f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (10);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (20);
-					if (cantidadCasas [casa] == 2) 
+					if (cantidadCasas [casa] < cantidadMaximaCasas [casa]) 
 					{
-						canvasPropiedades.GetComponent<ControlObjetivos> ().Objetivo [1] = true;
+						construccionPlacement.SetItem (casas [casa]);
+						cantidadCasas [casa] += 1;
+						banco.GetComponent<ControlBanco> ().totalOro -= costoCasaOro;
+						almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoCasaMadera;
+						almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoCasaHierro;
+						almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoCasaPlastico;
+						canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (1.5f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (5);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (10);
+
 					}
 				}
 			}
-		}
+		
+			if (casa == 1) 
+			{
+				if (banco.GetComponent<ControlBanco> ().gemas >= costoCasaGemas) 
+				{
+					if (cantidadCasas [casa] < cantidadMaximaCasas [casa]) 
+					{
+						construccionPlacement.SetItem (casas [casa]);
+						cantidadCasas [casa] += 1;
+						banco.GetComponent<ControlBanco> ().gemas -= costoCasaGemas;
+						canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (1.5f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (10);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (20);
+						if (cantidadCasas [casa] == 2) 
+						{
+							canvasPropiedades.GetComponent<ControlObjetivos> ().Objetivo [1] = true;
+						}
+					}
+				}
+			}
         
-    }
+		}
+	}
 
 	//Si se llama esta funcion se debe ingresar un argumento, segun el numero del argumento se construye el edificio indicado.
 	//Para el edificio se debe de contar con los materiales necsarios, los cuales son verificados desde el script ControlAlmacen.
 	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirEdificio(int edificio)
 	{
-		if (banco.GetComponent<ControlBanco> ().totalOro >= costoEdificiosOro [edificio] &&
-			almacen.GetComponent<ControlAlmacen>().cantMateriales[0] >= costoEdificiosMadera[edificio] &&
-			almacen.GetComponent<ControlAlmacen>().cantMateriales[1] >= costoEdificiosHierro[edificio] &&
-			almacen.GetComponent<ControlAlmacen>().cantMateriales[2] >= costoEdificiosPlastico[edificio]) 
+		if (canvasPropiedades.GetComponent<ControlRemover> ().remover == false) 
 		{
-			if (cantidadEdificios [edificio] < cantidadMaximaEdificios [edificio]) 
+			if (banco.GetComponent<ControlBanco> ().totalOro >= costoEdificiosOro [edificio] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] >= costoEdificiosMadera [edificio] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] >= costoEdificiosHierro [edificio] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] >= costoEdificiosPlastico [edificio]) 
 			{
-				construccionPlacement.Construir (edificios [edificio]);
-				cantidadEdificios [edificio] += 1;
-				banco.GetComponent<ControlBanco> ().totalOro -= costoEdificiosOro [edificio];
-				almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoEdificiosMadera [edificio];
-				almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoEdificiosHierro [edificio];
-				almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoEdificiosPlastico [edificio];
-
-				switch (edificio)
+				if (cantidadEdificios [edificio] < cantidadMaximaEdificios [edificio]) 
 				{
-				case 0:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (3f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (300);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (40);
-					break;
-				case 1:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (4f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (200);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (30);
-					break;
-				case 2:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (2f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (100);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (50);
-					break;
-				case 3:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (5f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (50);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (50);
-					canvasPropiedades.GetComponent<ControlObjetivos> ().Objetivo [0] = true;
-					break;
+					construccionPlacement.Construir (edificios [edificio]);
+					cantidadEdificios [edificio] += 1;
+					banco.GetComponent<ControlBanco> ().totalOro -= costoEdificiosOro [edificio];
+					almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoEdificiosMadera [edificio];
+					almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoEdificiosHierro [edificio];
+					almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoEdificiosPlastico [edificio];
+
+					switch (edificio) 
+					{
+					case 0:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (3f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (300);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (40);
+						break;
+					case 1:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (4f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (200);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (30);
+						break;
+					case 2:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (2f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (100);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (50);
+						break;
+					case 3:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (5f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (50);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (50);
+						canvasPropiedades.GetComponent<ControlObjetivos> ().Objetivo [0] = true;
+						break;
+					}
 				}
 			}
 		}
@@ -155,39 +162,42 @@ public class ConstruccionManager : MonoBehaviour
 	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se aumenta la contaminacion, la poblacion y la experiencia.
 	public void ConstruirCalle(int calle)
 	{
-		if (banco.GetComponent<ControlBanco> ().totalOro >= costoCallesOro [calle] &&
-			almacen.GetComponent<ControlAlmacen>().cantMateriales[0] >= costoCallesMadera[calle] &&
-			almacen.GetComponent<ControlAlmacen>().cantMateriales[1] >= costoCallesHierro[calle] &&
-			almacen.GetComponent<ControlAlmacen>().cantMateriales[2] >= costoCallesPlastico[calle]) 
+		if (canvasPropiedades.GetComponent<ControlRemover> ().remover == false) 
 		{
-			construccionPlacement.SetItem (calles [calle]);
-			banco.GetComponent<ControlBanco> ().totalOro -= costoCallesOro [calle];
-			almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoCallesMadera [calle];
-			almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoCallesHierro [calle];
-			almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoCallesPlastico [calle];
-			switch (calle)
+			if (banco.GetComponent<ControlBanco> ().totalOro >= costoCallesOro [calle] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] >= costoCallesMadera [calle] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] >= costoCallesHierro [calle] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] >= costoCallesPlastico [calle]) 
 			{
-			case 0:
-				canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (2f);
-				canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (2);
-				canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (10);
-				break;
-			case 6:
-				canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (2f);
-				canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (2);
-				canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (10);
-				break;
-			default:
-				canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (1f);
-				canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (1);
-				canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (5);
-				break;
-			}
+				construccionPlacement.SetItem (calles [calle]);
+				banco.GetComponent<ControlBanco> ().totalOro -= costoCallesOro [calle];
+				almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoCallesMadera [calle];
+				almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoCallesHierro [calle];
+				almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoCallesPlastico [calle];
+				switch (calle) 
+				{
+				case 0:
+					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (2f);
+					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (2);
+					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (10);
+					break;
+				case 6:
+					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (2f);
+					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (2);
+					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (10);
+					break;
+				default:
+					canvasPropiedades.GetComponent<ControlContaminacion> ().AumentarContaminacion (1f);
+					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (1);
+					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (5);
+					break;
+				}
 
-			cantidadCalles += 1;
-			if (cantidadCalles == 10) 
-			{
-				canvasPropiedades.GetComponent<ControlObjetivos> ().Objetivo [2] = true;
+				cantidadCalles += 1;
+				if (cantidadCalles == 10) 
+				{
+					canvasPropiedades.GetComponent<ControlObjetivos> ().Objetivo [2] = true;
+				}
 			}
 		}
 	}
@@ -197,41 +207,45 @@ public class ConstruccionManager : MonoBehaviour
 	//Si se posee el oro y los materiales necesarios, estos se restan respectivamente del almacen y del banco y se reduce la contaminacion, y se aumentan, la poblacion y la experiencia.
 	public void ConstruirAntiContaminante(int antiContaminante)
 	{
-		if (banco.GetComponent<ControlBanco> ().totalOro >= costoAntiContaminantesOro [antiContaminante] &&
-		    almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] >= costoAntiContaminantesMadera [antiContaminante] &&
-		    almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] >= costoAntiContaminantesHierro [antiContaminante] &&
-		    almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] >= costoAntiContaminantesPlastico [antiContaminante]) 
+		if (canvasPropiedades.GetComponent<ControlRemover> ().remover == false) 
 		{
-			if (cantidadAntiContaminantes [antiContaminante] < cantidadMaximaAntiContaminantes [antiContaminante]) 
+			if (banco.GetComponent<ControlBanco> ().totalOro >= costoAntiContaminantesOro [antiContaminante] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] >= costoAntiContaminantesMadera [antiContaminante] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] >= costoAntiContaminantesHierro [antiContaminante] &&
+			    almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] >= costoAntiContaminantesPlastico [antiContaminante]) 
 			{
-				construccionPlacement.SetItem (antiContaminantes [antiContaminante]);
-				cantidadAntiContaminantes [antiContaminante] += 1;
-				banco.GetComponent<ControlBanco> ().totalOro -= costoAntiContaminantesOro [antiContaminante];
-				almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoAntiContaminantesMadera [antiContaminante];
-				almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoAntiContaminantesHierro [antiContaminante];
-				almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoAntiContaminantesPlastico [antiContaminante];
+				if (cantidadAntiContaminantes [antiContaminante] < cantidadMaximaAntiContaminantes [antiContaminante]) 
+				{
+					construccionPlacement.SetItem (antiContaminantes [antiContaminante]);
+					cantidadAntiContaminantes [antiContaminante] += 1;
+					banco.GetComponent<ControlBanco> ().totalOro -= costoAntiContaminantesOro [antiContaminante];
+					almacen.GetComponent<ControlAlmacen> ().cantMateriales [0] -= costoAntiContaminantesMadera [antiContaminante];
+					almacen.GetComponent<ControlAlmacen> ().cantMateriales [1] -= costoAntiContaminantesHierro [antiContaminante];
+					almacen.GetComponent<ControlAlmacen> ().cantMateriales [2] -= costoAntiContaminantesPlastico [antiContaminante];
 
-				switch (antiContaminante) {
-				case 0:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (10f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (50);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (50);
-					break;
-				case 1:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (20f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (100);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (100);
-					break;
-				case 2:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (30f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (150);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (150);
-					break;
-				case 3:
-					canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (40f);
-					canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (200);
-					canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (200);
-					break;
+					switch (antiContaminante) 
+					{
+					case 0:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (10f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (50);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (50);
+						break;
+					case 1:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (20f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (100);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (100);
+						break;
+					case 2:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (30f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (150);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (150);
+						break;
+					case 3:
+						canvasPropiedades.GetComponent<ControlContaminacion> ().DisminuirContaminacion (40f);
+						canvasPropiedades.GetComponent<ControlPoblacion> ().AumentarCantidadPersonas (200);
+						canvasPropiedades.GetComponent<ControlExperiencia> ().AumentarExperiencia (200);
+						break;
+					}
 				}
 			}
 		}
